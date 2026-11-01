@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Алексей Соколов — руководитель проектов</title>
+  <!-- Это тестовая визитка. Замените имя, должность, текст и контакты на свои. -->
+  <style>
+    :root {
+      --paper: #e9eef2;
+      --card: #ffffff;
+      --ink: #1d2833;
+      --muted: #5a6876;
+      --line: #c9d3dc;
+      --accent: #1f5f8b;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141b21;
+        --card: #1e272f;
+        --ink: #e6ecf1;
+        --muted: #9aa8b5;
+        --line: #33414d;
+        --accent: #7fb6dd;
+        color-scheme: dark;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    main { max-width: 680px; margin: 0 auto; padding: 72px 20px 48px; }
+
+    /* Визитка: главный элемент страницы */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      aspect-ratio: 85 / 55;
+      padding: 8% 9%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: rotate(-1.5deg);
+      transition: transform .3s ease;
+    }
+    .card:hover { transform: rotate(0deg); }
+    .card h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(30px, 7vw, 46px);
+      line-height: 1.1;
+      margin: 0;
+    }
+    .card .role { color: var(--muted); margin: 8px 0 0; font-size: clamp(15px, 3vw, 18px); }
+    .card .contacts { display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: clamp(14px, 2.8vw, 16px); }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:focus-visible, .button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    section { margin-top: 64px; }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 0 0 16px; }
+    p { margin: 0 0 14px; }
+
+    dl { display: grid; grid-template-columns: 11em 1fr; gap: 14px 24px; margin: 0; }
+    dt { font-weight: 600; }
+    dd { margin: 0; color: var(--muted); }
+    @media (max-width: 540px) {
+      dl { grid-template-columns: 1fr; gap: 4px; }
+      dd { margin-bottom: 12px; }
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--card);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 72px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <div>
+        <h1>Алексей Соколов</h1>
+        <p class="role">Руководитель проектов</p>
+      </div>
+      <div class="contacts">
+        <a href="mailto:name@example.com">name@example.com</a>
+        <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+
+    <section>
+      <h2>Обо мне</h2>
+      <p>Веду проекты от идеи до запуска: собираю команду, планирую сроки и слежу, чтобы все говорили на одном языке.</p>
+      <p>Этот сайт — моя первая страница на GitHub Pages.</p>
+    </section>
+
+    <section>
+      <h2>Чем могу помочь</h2>
+      <dl>
+        <dt>Запуск проектов</dt>
+        <dd>План, бюджет и сроки, понятные всем участникам.</dd>
+        <dt>Презентации</dt>
+        <dd>Короткие и ясные материалы для клиентов и руководства.</dd>
+        <dt>Документы</dt>
+        <dd>Инструкции, регламенты и отчёты, которые читают до конца.</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Связаться</h2>
+      <p>Отвечаю на письма в течение рабочего дня.</p>
+      <a class="button" href="mailto:name@example.com">Написать письмо</a>
+    </section>
+
+    <footer>Сайт размещён на GitHub Pages.</footer>
+  </main>
+</body>
+</html>
