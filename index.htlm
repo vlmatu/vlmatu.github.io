@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мой первый сайт</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; }
+  </style>
+</head>
+<body>
+  <h1>Привет, GitHub Pages!</h1>
+  <p>Этот сайт опубликован из репозитория.</p>
+</body>
+</html>
