@@ -3,140 +3,254 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Олегзей Кастулов - челогуль брабаркуль</title>
-  <!-- Это тестовая визитка. Замените имя, должность, текст и контакты на свои. -->
+  <title>ONDOC · Инструменты и прототипы</title>
+  <meta name="description" content="Тестовые инструменты и прототипы ONDOC: актуальные версии для коллег.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Цвета и формы — по мотивам ondoc.app: бирюза, светлые подложки, крупные скругления */
     :root {
-      --paper: #e9eef2;
-      --card: #ffffff;
-      --ink: #1d2833;
-      --muted: #5a6876;
-      --line: #c9d3dc;
-      --accent: #1f5f8b;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --bg: #F5F6F7;
+      --tile: #FFFFFF;
+      --ink: #0B1B1D;
+      --muted: #5C6B6E;
+      --line: #E3E8EA;
+      --brand: #04BAC6;
+      --brand-ink: #03727A;
+      --brand-soft: #DDF6F7;
+      --mint: #C7F8E0;
+      --lilac: #EFEDF7;
+      --hero: #0B1B1D;
+      --hero-ink: #FFFFFF;
+      --focus: #1F7AE0;
+      --r-l: 32px;
+      --r-m: 20px;
+      --font: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color-scheme: light;
     }
     @media (prefers-color-scheme: dark) {
-      :root {
-        --paper: #141b21;
-        --card: #1e272f;
-        --ink: #e6ecf1;
-        --muted: #9aa8b5;
-        --line: #33414d;
-        --accent: #7fb6dd;
+      :root:not([data-theme="light"]) {
+        --bg: #0C1416;
+        --tile: #142022;
+        --ink: #E6F0F1;
+        --muted: #9AACAF;
+        --line: #24353A;
+        --brand: #2FCFD9;
+        --brand-ink: #6FE0E7;
+        --brand-soft: #123539;
+        --mint: #173A2E;
+        --lilac: #221F33;
+        --hero: #061012;
+        --hero-ink: #E6F0F1;
+        --focus: #7DB6FF;
         color-scheme: dark;
       }
     }
-    * { box-sizing: border-box; }
+    :root[data-theme="dark"] {
+      --bg: #0C1416;
+      --tile: #142022;
+      --ink: #E6F0F1;
+      --muted: #9AACAF;
+      --line: #24353A;
+      --brand: #2FCFD9;
+      --brand-ink: #6FE0E7;
+      --brand-soft: #123539;
+      --mint: #173A2E;
+      --lilac: #221F33;
+      --hero: #061012;
+      --hero-ink: #E6F0F1;
+      --focus: #7DB6FF;
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.6;
+      font: 400 16px/1.5 var(--font);
     }
-    main { max-width: 680px; margin: 0 auto; padding: 72px 20px 48px; }
+    a { color: var(--brand-ink); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    h1, h2, h3, p { margin: 0; }
 
-    /* Визитка: главный элемент страницы */
-    .card {
-      background: var(--card);
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+    /* Бенто-сетка */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 48px;
+    }
+    .tile {
+      background: var(--tile);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      aspect-ratio: 85 / 55;
-      padding: 8% 9%;
+      border-radius: var(--r-l);
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transform: rotate(-1.5deg);
-      transition: transform .3s ease;
+      gap: 12px;
+      min-width: 0;
     }
-    .card:hover { transform: rotate(0deg); }
-    .card h1 {
-      font-family: var(--serif);
+    .label {
+      font-size: .78rem;
       font-weight: 600;
-      font-size: clamp(30px, 7vw, 46px);
-      line-height: 1.1;
-      margin: 0;
-    }
-    .card .role { color: var(--muted); margin: 8px 0 0; font-size: clamp(15px, 3vw, 18px); }
-    .card .contacts { display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: clamp(14px, 2.8vw, 16px); }
-
-    a { color: var(--accent); text-underline-offset: 3px; }
-    a:focus-visible, .button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    section { margin-top: 64px; }
-    h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 0 0 16px; }
-    p { margin: 0 0 14px; }
-
-    dl { display: grid; grid-template-columns: 11em 1fr; gap: 14px 24px; margin: 0; }
-    dt { font-weight: 600; }
-    dd { margin: 0; color: var(--muted); }
-    @media (max-width: 540px) {
-      dl { grid-template-columns: 1fr; gap: 4px; }
-      dd { margin-bottom: 12px; }
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 12px 22px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: var(--card);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer {
-      margin-top: 72px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
+      letter-spacing: .08em;
+      text-transform: uppercase;
       color: var(--muted);
-      font-size: 14px;
+    }
+
+    .hero {
+      grid-column: span 6;
+      background: var(--hero);
+      color: var(--hero-ink);
+      border-color: var(--hero);
+      padding: clamp(28px, 5vw, 56px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      max-width: 14ch;
+    }
+    .hero .rings {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      pointer-events: none;
+    }
+    .hero > :not(.rings) { position: relative; }
+
+    .section-h {
+      grid-column: span 6;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .section-h h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.01em; }
+    .section-h span { color: var(--muted); font-size: .95rem; }
+
+    /* Бриф — главный инструмент */
+    .tool { grid-column: span 4; justify-content: space-between; gap: 24px; }
+    .tool-top { display: flex; flex-direction: column; gap: 10px; }
+    .tool h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -.01em; }
+    .tool p { color: var(--muted); max-width: 52ch; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+    .tags li {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      font-size: .85rem;
+      color: var(--ink);
+    }
+    .tags li.demo { background: var(--mint); border-color: transparent; }
+    .tool-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #06292C;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -8px var(--brand); }
+    .button svg { transition: transform .15s ease; }
+    .button:hover svg { transform: translateX(3px); }
+    .updated { color: var(--muted); font-size: .9rem; }
+
+    .stat { grid-column: span 2; background: var(--brand-soft); border-color: transparent; justify-content: space-between; }
+    .stat strong { font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; font-weight: 700; color: var(--brand-ink); letter-spacing: -.03em; }
+    .stat p { color: var(--ink); }
+
+    /* Пустые разделы */
+    .empty { grid-column: span 6; background: var(--lilac); border-color: transparent; }
+    .empty h3 { font-size: 1.2rem; font-weight: 700; }
+    .empty p { color: var(--muted); }
+
+    @media (max-width: 860px) {
+      .tool { grid-column: span 6; }
+      .stat { grid-column: span 6; flex-direction: row; align-items: center; }
+    }
+    @media (max-width: 560px) {
+      .tile { padding: 22px; border-radius: var(--r-m); }
+      .hero .rings { width: 260px; height: 260px; right: -150px; top: -60px; transform: none; opacity: .3; }
+      .stat { flex-direction: column; align-items: flex-start; }
+      .button { width: 100%; justify-content: center; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .card { transition: none; }
+      .button, .button svg { transition: none; }
+      .button:hover, .button:hover svg { transform: none; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="card">
-      <div>
-        <h1>Алексей Соколов</h1>
-        <p class="role">Руководитель проектов</p>
-      </div>
-      <div class="contacts">
-        <a href="mailto:name@example.com">name@example.com</a>
-        <a href="https://github.com/">GitHub</a>
-      </div>
+  <main class="wrap bento">
+    <section class="tile hero" aria-labelledby="hero-title">
+      <svg class="rings" viewBox="0 0 420 420" aria-hidden="true">
+        <circle cx="210" cy="210" r="180" fill="none" stroke="var(--brand)" stroke-width="56" opacity=".9"/>
+        <circle cx="210" cy="210" r="96" fill="none" stroke="var(--brand)" stroke-width="2" opacity=".35"/>
+      </svg>
+      <h1 id="hero-title">Инструменты и&nbsp;прототипы</h1>
+    </section>
+
+    <div class="section-h">
+      <h2>Инструменты</h2>
     </div>
 
-    <section>
-      <h2>Обо мне</h2>
-      <p>Веду проекты от идеи до запуска: собираю команду, планирую сроки и слежу, чтобы все говорили на одном языке.</p>
-      <p>Этот сайт — моя первая страница на GitHub Pages.</p>
-    </section>
+    <article class="tile tool" aria-labelledby="brief-title">
+      <div class="tool-top">
+        <p class="label">Продажи · веб-анкета</p>
+        <h3 id="brief-title">Бриф подбора решения</h3>
+        <p>Клиника отвечает на вопросы о задачах и масштабе — бриф подбирает продукт ONDOC, показывает состав и ориентир по цене и собирает заявку для менеджера.</p>
+        <ul class="tags">
+          <li class="demo">Демо-режим: заявки не отправляются</li>
+          <li>RU · EN · KK</li>
+          <li>Каталог цен от 27.10.2026</li>
+        </ul>
+      </div>
+      <div class="tool-foot">
+        <a class="button" href="brief/">
+          Бриф
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M10 4.5 14.5 9 10 13.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <span class="updated">Обновлён 1 ноября 2026</span>
+      </div>
+    </article>
 
-    <section>
-      <h2>Чем могу помочь</h2>
-      <dl>
-        <dt>Запуск проектов</dt>
-        <dd>План, бюджет и сроки, понятные всем участникам.</dd>
-        <dt>Презентации</dt>
-        <dd>Короткие и ясные материалы для клиентов и руководства.</dd>
-        <dt>Документы</dt>
-        <dd>Инструкции, регламенты и отчёты, которые читают до конца.</dd>
-      </dl>
-    </section>
+    <aside class="tile stat" aria-label="Сколько шагов в брифе">
+      <strong>5</strong>
+      <p>шагов от задач клиники до готовой заявки</p>
+    </aside>
 
-    <section>
-      <h2>Связаться</h2>
-      <p>Отвечаю на письма в течение рабочего дня.</p>
-      <a class="button" href="mailto:name@example.com">Написать письмо</a>
-    </section>
+    <div class="section-h">
+      <h2>Прототипы</h2>
+      <span>скоро</span>
+    </div>
 
-    <footer>Сайт размещён на GitHub Pages.</footer>
+    <section class="tile empty" aria-labelledby="proto-title">
+      <p class="label">В работе</p>
+      <h3 id="proto-title">Новые прототипы появятся здесь</h3>
+      <p>Когда очередной эксперимент будет готов к показу, его карточка встанет в эту сетку.</p>
+    </section>
   </main>
 </body>
 </html>
